@@ -31,6 +31,34 @@
             padding: 20px; /* espacio dentro del div */
         }
 
+        .btn-inicio {
+            background-color: #1A2E35;
+            color: white;
+            font-weight: bold;
+            border: none;
+        }
+
+        .btn-inicio:hover {
+            background-color: #16262c;
+            color: white;
+            transform: translateY(-4px); /* se mueve hacia arriba */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2); /* sombra elegante */
+        }
+
+        .btn-registrate {
+            background-color: #C1B58D;
+            color: white;
+            font-weight: bold;
+            border: none;
+        }
+
+        .btn-registrate:hover {
+            background-color: #b3a77f;
+            color: white;
+            transform: translateY(-4px); /* se mueve hacia arriba */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2); /* sombra elegante */
+        }
+
         @media (max-width: 768px) {
             .login-image {
                 display: none;
@@ -48,7 +76,7 @@
         <div class="col-md-4 d-flex align-items-center bg-white">
             <div class="w-100 login-form">
 
-                <h2 class="fw-bold mb-4" style="color: #BEB083;">SISTEMA DE REGISTRO DE ASPIRANTES A CONSEJOS MUNICIPALES ELECTORALES</h2>
+                <h2 class="fw-bold mb-4" style="color: #BEB083;">SISTEMA DE REGISTRO DE ASPIRANTES A CONSEJOS DISTRITALES ELECTORALES</h2>
 
                 {% if messages %}
                     {% for message in messages %}
@@ -93,21 +121,37 @@
                         </div>
                     </div>
 
+                    <div class="text-end mt-2">
+                        <a href="{% url 'password_reset' %}" 
+                        class="small text-decoration-none">
+                            ¿No recuerdas tu contraseña?
+                        </a>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center mt-2">
+                        <div></div>
+                        <a href="{% url 'password_reset' %}" 
+                        class="small fw-semibold text-decoration-none">
+                            ¿Olvidaste tu contraseña?
+                        </a>
+                    </div>
+
                     <!-- Google reCAPTCHA -->
                     <div class="mb-3 d-flex justify-content-center">
                         <div class="g-recaptcha" data-sitekey="{{ RECAPTCHA_SITE_KEY }}"></div>
                     </div>
 
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-primary btn-lg">
+                        <button type="submit" class="btn btn-lg btn-inicio">
                             INICIAR SESIÓN
                         </button>
                     </div>
+                    <div class="d-grid mt-3">
+                        <a href="#" class="btn btn-lg btn-registrate">
+                            REGISTRARSE
+                        </a>
+                    </div>
                 </form>
-
-                <p class="text-muted mt-4 small">
-                    Inicio Sesión de Registro de Candidatos - IEE
-                </p>
 
             </div>
         </div>
