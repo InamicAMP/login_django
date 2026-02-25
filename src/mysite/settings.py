@@ -15,6 +15,9 @@ from pathlib import Path
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/login-basico/'
 
+RECAPTCHA_SITE_KEY = "6LcosHcsAAAAAK4TTEcy8Skld8dMFB6Lx1m4cLux"
+RECAPTCHA_SECRET_KEY = "6LcosHcsAAAAAOl4NpjH1iY-4t2HEDOAbzJIsfA_"
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -34,7 +37,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'usuarios.apps.UsuariosConfig',
+    'usuarios',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -119,3 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]

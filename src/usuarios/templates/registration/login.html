@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Básico</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    {% load static %}
+    <style>
+        body {
+            height: 100vh;
+        }
+
+        .login-container {
+            height: 100vh;
+        }
+
+        .login-form {
+            padding: 60px;
+        }
+
+        .login-image {
+            /* background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f'); */
+            background-image: url("{% static 'img/comenzar.webp' %}");
+            background-repeat: no-repeat;
+            background-size: contain; /* asegura que toda la imagen se vea */
+            background-position: center;
+            padding: 20px; /* espacio dentro del div */
+        }
+
+        @media (max-width: 768px) {
+            .login-image {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container-fluid login-container">
+    <div class="row h-100">
+
+        <!-- 🟦 1/3 IZQUIERDA - LOGIN -->
+        <div class="col-md-4 d-flex align-items-center bg-white">
+            <div class="w-100 login-form">
+
+                <h2 class="fw-bold mb-4" style="color: #BEB083;">SISTEMA DE REGISTRO DE ASPIRANTES A CONSEJOS MUNICIPALES ELECTORALES</h2>
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-danger">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                {% if form.errors %}
+                    <div class="alert alert-danger">
+                        Usuario o contraseña incorrectos
+                    </div>
+                {% endif %}
+
+                <form method="post">
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label class="form-label">Usuario</label>
+                        <div class="input-group">
+                            <input type="text" 
+                                name="username" 
+                                class="form-control" 
+                                placeholder="Ingrese su usuario">
+                            <span class="input-group-text bg-primary text-white">
+                                <i class="fa-solid fa-user"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">Contraseña</label>
+                        <div class="input-group">
+                            <input type="password" 
+                                name="password" 
+                                class="form-control" 
+                                placeholder="Ingrese su contraseña">
+                            <span class="input-group-text bg-primary text-white">
+                                <i class="fa-solid fa-lock"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Google reCAPTCHA -->
+                    <div class="mb-3 d-flex justify-content-center">
+                        <div class="g-recaptcha" data-sitekey="{{ RECAPTCHA_SITE_KEY }}"></div>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            INICIAR SESIÓN
+                        </button>
+                    </div>
+                </form>
+
+                <p class="text-muted mt-4 small">
+                    Inicio Sesión de Registro de Candidatos - IEE
+                </p>
+
+            </div>
+        </div>
+
+        <!-- 🟦 2/3 DERECHA - IMAGEN -->
+        <div class="col-md-8 login-image d-none d-md-block">
+        </div>
+
+    </div>
+</div>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</body>
+</html>
