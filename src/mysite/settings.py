@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '//'
 LOGOUT_REDIRECT_URL = '/login-basico/'
 
 RECAPTCHA_SITE_KEY = "6LcosHcsAAAAAK4TTEcy8Skld8dMFB6Lx1m4cLux"
@@ -109,9 +109,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Mexico_City'
 
 USE_I18N = True
 
